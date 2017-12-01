@@ -23,7 +23,9 @@
 		This is a simple client-side javascript that will give your estimate for status quo versus senate proposal. No data is collected and your privacy is protected unconditionally.
 		This is not meant to serve as a tax software but as a means to compare the insane number of tax overhaul proposals. The house bill will be added into a third column. 
 		Tax proposals related to a common man are included here. Though 2million is the income limit in this script, this will surely not help someone in that range.
-		Below guidelines are primarily taken from the draft posted online which devotes most of its time to corporate rate deduction. Passthru income and Estate taxes will be dealt with in future revisions to get a feel of how different tyes of income are treated.<br><br>
+		Below guidelines are primarily taken from the draft posted online which devotes most of its time to corporate rate deduction. 
+		Passthru income and Estate taxes will be dealt with in future revisions to get a feel of how different tyes of income are treated.<br>
+		An example family of four with 2 children and earning 150k with a mortgage to pay is shown below.<br><br>
 		Last Updated: Dec 1, 2017, 10:10PM GMT
 	</div>
 	<div class="well">
@@ -309,17 +311,36 @@
 	income_statusquo=0;
 	$(document).ready(function(){
 		$('[data-toggle1="tooltip"]').tooltip();
+		Initialize();
 	});
 
+	function Initialize(){
+		$("#salariedincome").val("150000").change();
+		//updateIncome();
+		$(".filingclass-selected").text("Married Individuals Fiing Jointly").change();
+		updateStdDeduction();
+		$(".personalexemptioncount-selected").text("4");
+		updatePersonalExemption();
+		$(".childcount-selected").text("2");
+		updateChildCredit();
+		$("#salt").val("12000").change();
+		$("#property").val("5000").change();
+		$("#mortgage").val("6000").change();
+		refreshTax();
+	}
+	
 	$(".filingclass-item").click(function(e){
 		filingtype=parseInt($(this).data('id'));
 		$(".filingclass-selected").text($(this).text());
-		$(".stdded").find(".statusquo").text(stdded_statusquo[filingtype]);
-		$(".stdded").find(".senatebill").text(stdded_senatebill[filingtype]);
+		updateStdDeduction();
 		updatePersonalExemption();
 		refreshTax();
 		e.preventDefault();
 	});
+	function updateStdDeduction(){
+		$(".stdded").find(".statusquo").text(stdded_statusquo[filingtype]);
+		$(".stdded").find(".senatebill").text(stdded_senatebill[filingtype]);
+	}
 	$(".personalexemptioncount-item").click(function(e){
 		$(".personalexemptioncount-selected").text($(this).text());
 		updatePersonalExemption();
@@ -347,7 +368,7 @@
 	}
 	$(".childcount-item").click(function(e){
 		$(".childcount-selected").text($(this).text());
-		updateChildCredit(parseInt($(this).text()));
+		updateChildCredit();
 		refreshTax();
 		e.preventDefault();
 	});
@@ -366,17 +387,20 @@
 		$(".nonchildcredit").find(".senatebill").text((500-Math.max(0,(income_statusquo-childcredit_senatebill[filingtype])/1000))*parseInt($(".nonchildcount-selected").text()));
 	}
 	$("#salariedincome").change(function(){
-		income_statusquo = parseInt($("#salariedincome").val())+parseInt($("#passthruincome").val());
+		updateIncome();
 		updateChildCredit();
 		updatePersonalExemption();
 		refreshTax();
 	});
 	$("#passthruincome").change(function(){
-		income_statusquo = parseInt($("#salariedincome").val())+parseInt($("#passthruincome").val());
+		updateIncome();
 		updateChildCredit();
 		updatePersonalExemption();
 		refreshTax();
 	});
+	function updateIncome(){
+		income_statusquo = parseInt($("#salariedincome").val())+parseInt($("#passthruincome").val());	
+	}
 	function updatePersonalExemption(){
 		if (income_statusquo<perex_statusquo[filingtype])
 			$(".personalexemption").find(".statusquo").text(4050*parseInt($(".personalexemptioncount-selected").text()));
@@ -391,12 +415,12 @@
 	});
 	$("#property").change(function(){
 		$(".property").find(".statusquo").text(parseInt($("#property").val()));
-		$(".property").find(".senatebill").text("0");
+		$(".property").find(".senatebill").text(Math.min(10000,parseInt($("#property").val())));
 		refreshTax();
 	});
 	$("#mortgage").change(function(){
 		$(".mortgage").find(".statusquo").text(parseInt($("#mortgage").val()));
-		$(".mortgage").find(".senatebill").text("0");
+		$(".mortgage").find(".senatebill").text(parseInt($("#mortgage").val()));
 		refreshTax();
 	});
 	$("#salt").change(function(){
