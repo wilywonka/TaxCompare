@@ -23,8 +23,8 @@
 		This is a simple client-side javascript that will give your estimate for status quo versus senate proposal. No data is collected and your privacy is protected unconditionally.
 		This is not meant to serve as a tax software but as a means to compare the insane number of tax overhaul proposals. The house bill will be added into a third column. 
 		Tax proposals related to a common man are included here. Though 2million is the income limit in this script, this will surely not help someone in that range.
-		Below guidelines are primarily taken from the draft posted online which devotes most of its time to corporate rate deduction. Estate taxes have not been dealt with.<br><br>
-		Last Updated: Dec 1, 2017, 9:54PM GMT
+		Below guidelines are primarily taken from the draft posted online which devotes most of its time to corporate rate deduction. Passthru income and Estate taxes will be dealt with in future revisions to get a feel of how different tyes of income are treated.<br><br>
+		Last Updated: Dec 1, 2017, 10:10PM GMT
 	</div>
 	<div class="well">
 		<div class="row filingclass">
@@ -171,7 +171,7 @@
 			<label for="salariedincome" class="control-label col-sm-2">W2 Wages and Tips</label>
 			<div class="col-sm-2"><input type="text" class="form-control" id="salariedincome" value="0"></div>
 		</div>
-		<div class="row passthruincome">
+		<div class="row passthruincome hide">
 			<label for="passthruincome" class="control-label col-sm-2">Passthru Income</label>
 			<div class="col-sm-2"><input type="text" class="form-control" id="passthruincome" value="0"></div>
 		</div>
@@ -306,7 +306,7 @@
 	var childcredit_senatebill = [500000,500000,1000000,500000];
 	
 	filingtype=0;
-	taxableincome=0;
+	income_statusquo=0;
 	$(document).ready(function(){
 		$('[data-toggle1="tooltip"]').tooltip();
 	});
@@ -340,7 +340,7 @@
 	});
 	function updateACAPenalty(){
 		if (parseInt($(".ACApenaltyadultcount-selected").text())>0 || parseInt($(".ACApenaltychildcount-selected").text())>0)
-			$(".ACAPenalty").find(".statusquo").text(Math.max(0.025*taxableincome,Math.min(2085, 695*parseInt($(".ACApenaltyadultcount-selected").text())+ 347.5*parseInt($(".ACApenaltychildcount-selected").text()))));		
+			$(".ACAPenalty").find(".statusquo").text(Math.max(0.025*income_statusquo,Math.min(2085, 695*parseInt($(".ACApenaltyadultcount-selected").text())+ 347.5*parseInt($(".ACApenaltychildcount-selected").text()))));		
 		else
 			$(".ACAPenalty").find(".statusquo").text(0);		
 		$(".ACAPenalty").find(".senatebill").text(0);		
@@ -358,27 +358,27 @@
 		e.preventDefault();
 	});
 	function updateChildCredit(){
-		$(".childcredit").find(".statusquo").text((1000-Math.max(0,(taxableincome-childcredit_statusquo[filingtype])/1000))*parseInt($(".childcount-selected").text()));
-		$(".childcredit").find(".senatebill").text((1650-Math.max(0,(taxableincome-childcredit_senatebill[filingtype])/1000))*parseInt($(".childcount-selected").text()));
+		$(".childcredit").find(".statusquo").text((1000-Math.max(0,(income_statusquo-childcredit_statusquo[filingtype])/1000))*parseInt($(".childcount-selected").text()));
+		$(".childcredit").find(".senatebill").text((1650-Math.max(0,(income_statusquo-childcredit_senatebill[filingtype])/1000))*parseInt($(".childcount-selected").text()));
 	}
 	function updateNonChildCredit(count){
 		$(".nonchildcredit").find(".statusquo").text(0);
-		$(".nonchildcredit").find(".senatebill").text((500-Math.max(0,(taxableincome-childcredit_senatebill[filingtype])/1000))*parseInt($(".nonchildcount-selected").text()));
+		$(".nonchildcredit").find(".senatebill").text((500-Math.max(0,(income_statusquo-childcredit_senatebill[filingtype])/1000))*parseInt($(".nonchildcount-selected").text()));
 	}
 	$("#salariedincome").change(function(){
-		taxableincome = parseInt($("#salariedincome").val())+parseInt($("#passthruincome").val());
+		income_statusquo = parseInt($("#salariedincome").val())+parseInt($("#passthruincome").val());
 		updateChildCredit();
 		updatePersonalExemption();
 		refreshTax();
 	});
 	$("#passthruincome").change(function(){
-		taxableincome = parseInt($("#salariedincome").val())+parseInt($("#passthruincome").val());
+		income_statusquo = parseInt($("#salariedincome").val())+parseInt($("#passthruincome").val());
 		updateChildCredit();
 		updatePersonalExemption();
 		refreshTax();
 	});
 	function updatePersonalExemption(){
-		if (taxableincome<perex_statusquo[filingtype])
+		if (income_statusquo<perex_statusquo[filingtype])
 			$(".personalexemption").find(".statusquo").text(4050*parseInt($(".personalexemptioncount-selected").text()));
 		else
 			$(".personalexemption").find(".statusquo").text(0);
@@ -415,19 +415,19 @@
 		refreshTax();
 	});
 	function refreshTax(){
-		//alert(taxableincome);
-		//AGI1 = taxableincome - parseInt($(".personalexemption").find(".statusquo").text()) - parseInt($(".salt").find(".statusquo").text()) - parseInt($(".taxprep").find(".statusquo").text());
-		AGI1 = taxableincome - parseInt($(".personalexemption").find(".statusquo").text());
+		//alert(income_statusquo);
+		//AGI1 = income_statusquo - parseInt($(".personalexemption").find(".statusquo").text()) - parseInt($(".salt").find(".statusquo").text()) - parseInt($(".taxprep").find(".statusquo").text());
+		AGI1 = income_statusquo - parseInt($(".personalexemption").find(".statusquo").text());
 		//alert(AGI1);
 		itemded=0;
 		$(".deduction").find(".statusquo").each(function (index){
 		itemded += parseInt($(this).text());
 		});
-		if (taxableincome > itemded_statusquo[filingtype])
-			itemded -= Math.min(0.02*itemded, 0.03*(taxableincome - itemded_statusquo[filingtype]));  //Item 7
+		if (income_statusquo > itemded_statusquo[filingtype])
+			itemded -= Math.min(0.02*itemded, 0.03*(income_statusquo - itemded_statusquo[filingtype]));  //Item 7
 		AGI1 -= itemded;
 		//alert(AGI1);
-		AGI2 = taxableincome - parseInt($(".personalexemption").find(".statusquo").text())- parseInt($(".stdded").find(".statusquo").text());
+		AGI2 = income_statusquo - parseInt($(".personalexemption").find(".statusquo").text())- parseInt($(".stdded").find(".statusquo").text());
 		if (AGI1<AGI2) AGI = AGI1;
 		else AGI = AGI2;
 		if (AGI<taxbracket_statusquo[filingtype][0][0]) TaxEst= taxbracket_statusquo[filingtype][0][1]+taxbracket_statusquo[filingtype][0][2]*(AGI-taxbracket_statusquo[filingtype][0][3]);
@@ -452,14 +452,15 @@
 		
 		$(".taxest").find(".statusquo").text(TaxEst);
 
-		AGI_amt = taxableincome - Math.max(0,amtex_statusquo[filingtype]-(taxableincome-amtphaseout_statusquo)*0.25);
+		AGI_amt = income_statusquo - Math.max(0,amtex_statusquo[filingtype]-(income_statusquo-amtphaseout_statusquo)*0.25);
 		AmtEst =0;
 		if (AGI_amt<amtbracket_statusquo[filingtype][0][0]) AmtEst= amtbracket_statusquo[filingtype][0][1]+amtbracket_statusquo[filingtype][0][2]*(AGI_amt-amtbracket_statusquo[filingtype][0][3]);
 		else if (AGI_amt<amtbracket_statusquo[filingtype][1][0]) AmtEst= amtbracket_statusquo[filingtype][1][1]+amtbracket_statusquo[filingtype][1][2]*(AGI_amt-taxbracket_statusquo[filingtype][1][3]);
 		$(".amtest").find(".statusquo").text(Math.max(0,AmtEst - TaxEst));
 
-		AGI1 = taxableincome;
-		AGI2 = taxableincome - parseInt($(".stdded").find(".senatebill").text());
+		
+		AGI1 = income_statusquo;
+		AGI2 = income_statusquo - parseInt($(".stdded").find(".senatebill").text());
 		if (AGI1<AGI2) AGI = AGI1;
 		else AGI = AGI2;
 		if (AGI<taxbracket_senatebill[filingtype][0][0]) TaxEst= taxbracket_senatebill[filingtype][0][1]+taxbracket_senatebill[filingtype][0][2]*(AGI-taxbracket_senatebill[filingtype][0][3]);
