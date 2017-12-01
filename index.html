@@ -1,0 +1,490 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Bootstrap 3, from LayoutIt!</title>
+
+    <meta name="description" content="Source code generated using layoutit.com">
+    <meta name="author" content="LayoutIt!">
+
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+
+  </head>
+  <body>
+
+  <div class="container-fluid">
+		
+	<div class="well">
+		<center><h1>Average Joe tax estimator</h1></center><br>
+		This is a simple client-side javascript that will give your estimate for status quo versus senate proposal. No data is collected and your privacy is protected unconditionally.
+		This is not meant to serve as a tax software but as a means to compare the insane number of tax overhaul proposals. The house bill will be added into a third column. 
+		Tax proposals related to a common man are included here. Though 2million is the income limit in this script, this will surely not help someone in that range.
+		Below guidelines are primarily taken from the draft posted online which devotes most of its time to corporate rate deduction. Estate taxes have not been dealt with.<br><br>
+		Last Updated: Dec 1, 2017, 9:54PM GMT
+	</div>
+	<div class="well">
+		<div class="row filingclass">
+			<label for="filingstatus" class="control-label col-sm-2">Filing Status</label>
+			<div class="btn-group col-sm-3">
+				 
+				<button class="btn btn-default filingclass-selected" id="filingstatus">
+					Single Individual
+				</button> 
+				<button data-toggle="dropdown" class="btn btn-default dropdown-toggle">
+					<span class="caret"></span>
+				</button>
+				<ul class="dropdown-menu">
+					<li>
+						<a href="#" class="filingclass-item" data-id="0">Single Individual</a>
+					</li>
+					<li>
+						<a href="#" class="filingclass-item" data-id="1">Heads of Households</a>
+					</li>
+					<li>
+						<a href="#" class="filingclass-item" data-id="2">Married Individuals Fiing Jointly</a>
+					</li>
+					<li>
+						<a href="#" class="filingclass-item" data-id="3">Married Individuals Fiing Separately</a>
+					</li>
+				</ul>
+			</div>
+		</div>
+
+		
+		<div class="row personalexemptioncount">
+			<label for="personalexemptioncount" class="control-label col-sm-2">Personal exemption count</label>
+			<div class="col-sm-2"  data-toggle1="tooltip" data-placement="top" title="Include yourself, spouse and dependents subject to withholding rules">
+				<div class="btn-group">
+					<button class="btn btn-default personalexemptioncount-selected" id="personalexemptioncount">
+						1
+					</button> 
+					<button data-toggle="dropdown" class="btn btn-default dropdown-toggle">
+						<span class="caret"></span>
+					</button>
+					<ul class="dropdown-menu">
+						<li> <a href="#" class="personalexemptioncount-item" data-id="1">1</a> </li>
+						<li> <a href="#" class="personalexemptioncount-item" data-id="2">2</a> </li>
+						<li> <a href="#" class="personalexemptioncount-item" data-id="3">3</a> </li>
+						<li> <a href="#" class="personalexemptioncount-item" data-id="4">4</a> </li>
+						<li> <a href="#" class="personalexemptioncount-item" data-id="5">5</a> </li>
+						<li> <a href="#" class="personalexemptioncount-item" data-id="6">6</a> </li>
+						<li> <a href="#" class="personalexemptioncount-item" data-id="7">7</a> </li>
+					</ul>
+				</div>
+			</div>
+		</div>
+
+		<div class="row childcount">
+			<label for="childcount" class="control-label col-sm-2">Dependent children</label>
+			<div class="col-sm-2"  data-toggle1="tooltip"  data-placement="top" title="Count number of children qualifying for credit">			
+				<div class="btn-group">
+					<button class="btn btn-default childcount-selected" id="childcount">
+						0
+					</button> 
+					<button data-toggle="dropdown" class="btn btn-default dropdown-toggle">
+						<span class="caret"></span>
+					</button>
+					<ul class="dropdown-menu">
+						<li> <a href="#" class="childcount-item" data-id="0">0</a> </li>
+						<li> <a href="#" class="childcount-item" data-id="1">1</a> </li>
+						<li> <a href="#" class="childcount-item" data-id="2">2</a> </li>
+						<li> <a href="#" class="childcount-item" data-id="3">3</a> </li>
+						<li> <a href="#" class="childcount-item" data-id="4">4</a> </li>
+					</ul>
+				</div>
+			</div>	
+		</div>
+		<div class="row nonchildcount">
+			<label for="nonchildcount" class="control-label col-sm-2">Dependents who are not children</label>
+			<div class="col-sm-2"  data-toggle1="tooltip"  data-placement="top" title="Count dependents who dont count as qualifying children">			
+				<div class="btn-group">
+					<button class="btn btn-default nonchildcount-selected" id="nonchildcount">
+						0
+					</button> 
+					<button data-toggle="dropdown" class="btn btn-default dropdown-toggle">
+						<span class="caret"></span>
+					</button>
+					<ul class="dropdown-menu">
+						<li> <a href="#" class="nonchildcount-item" data-id="0">0</a> </li>
+						<li> <a href="#" class="nonchildcount-item" data-id="1">1</a> </li>
+						<li> <a href="#" class="nonchildcount-item" data-id="2">2</a> </li>
+						<li> <a href="#" class="nonchildcount-item" data-id="3">3</a> </li>
+						<li> <a href="#" class="nonchildcount-item" data-id="4">4</a> </li>
+					</ul>
+				</div>
+			</div>
+		</div>
+		<div class="row ACApenaltyadultcount">
+			<label for="ACApenaltyadultcount" class="control-label col-sm-2">Adults without health insurance</label>
+			<div class="col-sm-2"  data-toggle1="tooltip" data-placement="top" title="How many adults didnt have health insurance for atleast 3 entire calendar months">
+				<div class="btn-group">
+					<button class="btn btn-default ACApenaltyadultcount-selected" id="ACApenaltyadultcount">
+						0
+					</button> 
+					<button data-toggle="dropdown" class="btn btn-default dropdown-toggle">
+						<span class="caret"></span>
+					</button>
+					<ul class="dropdown-menu">
+						<li> <a href="#" class="ACApenaltyadultcount-item" data-id="0">0</a> </li>
+						<li> <a href="#" class="ACApenaltyadultcount-item" data-id="1">1</a> </li>
+						<li> <a href="#" class="ACApenaltyadultcount-item" data-id="2">2</a> </li>
+						<li> <a href="#" class="ACApenaltyadultcount-item" data-id="3">3</a> </li>
+						<li> <a href="#" class="ACApenaltyadultcount-item" data-id="4">4</a> </li>
+						<li> <a href="#" class="ACApenaltyadultcount-item" data-id="5">5</a> </li>
+						<li> <a href="#" class="ACApenaltyadultcount-item" data-id="6">6</a> </li>
+						<li> <a href="#" class="ACApenaltyadultcount-item" data-id="7">7</a> </li>
+					</ul>
+				</div>
+			</div>
+		</div>
+		<div class="row ACApenaltychildcount">
+			<label for="ACApenaltychildcount" class="control-label col-sm-2">Children without health insurance</label>
+			<div class="col-sm-2"  data-toggle1="tooltip" data-placement="top" title="How many children didnt have health insurance for atleast 3 entire calendar months">
+				<div class="btn-group">
+					<button class="btn btn-default ACApenaltychildcount-selected" id="ACApenaltychildcount">
+						0
+					</button> 
+					<button data-toggle="dropdown" class="btn btn-default dropdown-toggle">
+						<span class="caret"></span>
+					</button>
+					<ul class="dropdown-menu">
+						<li> <a href="#" class="ACApenaltychildcount-item" data-id="0">0</a> </li>
+						<li> <a href="#" class="ACApenaltychildcount-item" data-id="1">1</a> </li>
+						<li> <a href="#" class="ACApenaltychildcount-item" data-id="2">2</a> </li>
+						<li> <a href="#" class="ACApenaltychildcount-item" data-id="3">3</a> </li>
+						<li> <a href="#" class="ACApenaltychildcount-item" data-id="4">4</a> </li>
+						<li> <a href="#" class="ACApenaltychildcount-item" data-id="5">5</a> </li>
+						<li> <a href="#" class="ACApenaltychildcount-item" data-id="6">6</a> </li>
+						<li> <a href="#" class="ACApenaltychildcount-item" data-id="7">7</a> </li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+	<div class="well">
+		<div class="row salariedincome">
+			<label for="salariedincome" class="control-label col-sm-2">W2 Wages and Tips</label>
+			<div class="col-sm-2"><input type="text" class="form-control" id="salariedincome" value="0"></div>
+		</div>
+		<div class="row passthruincome">
+			<label for="passthruincome" class="control-label col-sm-2">Passthru Income</label>
+			<div class="col-sm-2"><input type="text" class="form-control" id="passthruincome" value="0"></div>
+		</div>
+	</div>
+	
+	<div class="well">
+		<div class="row stdded">
+			<label class="control-label col-sm-2">Standard deduction</label>
+			<div class="col-sm-2"></div>
+			<div class="col-sm-2 statusquo">6350</div>
+			<div class="col-sm-2 senatebill">12000</div>		
+		</div>
+		<div class="row personalexemption">
+			<label class="control-label col-sm-2">Personal Exemption</label>
+			<div class="col-sm-2"></div>
+			<div class="col-sm-2 statusquo">4050</div>
+			<div class="col-sm-2 senatebill">0</div>		
+		</div>
+	</div>
+
+	<div class="well deduction">
+		<div class="row salt">
+			<label for="salt" class="control-label col-sm-2">State income taxes</label>
+			<div class="col-sm-2"><input type="text" class="form-control" id="salt" value="0" data-toggle1="tooltip" title="Enter your Sales and Local Taxes to deduct, if any"></div>
+			<div class="col-sm-2 statusquo">0</div>
+			<div class="col-sm-2 senatebill">0</div>		
+		</div>
+
+		<div class="row property">
+			<label for="property" class="control-label col-sm-2">Local property taxes</label>
+			<div class="col-sm-2"><input type="text" class="form-control" id="property" value="0" data-toggle1="tooltip" title="Property taxes for your home"></div>
+			<div class="col-sm-2 statusquo">0</div>
+			<div class="col-sm-2 senatebill">0</div>		
+		</div>
+
+		<div class="row mortgage">
+			<label for="mortgage" class="control-label col-sm-2">Mortgage Interest</label>
+			<div class="col-sm-2"><input type="text" class="form-control" id="mortgage" value="0" data-toggle1="tooltip" title="Interest paid on your mortgage in an entire year"></div>
+			<div class="col-sm-2 statusquo">0</div>
+			<div class="col-sm-2 senatebill">0</div>		
+		</div>
+
+		<div class="row taxprep">
+			<label for="taxprep" class="control-label col-sm-2">Tax preparation expense</label>
+			<div class="col-sm-2"><input type="text" class="form-control" id="taxprep" value="0" data-toggle1="tooltip" title="Enter tax preparation expense"></div>
+			<div class="col-sm-2 statusquo">0</div>
+			<div class="col-sm-2 senatebill">0</div>		
+		</div>
+
+		<div class="row movingexpense">
+			<label for="movingexpense" class="control-label col-sm-2">Expenses incurred in moving jobs</label>
+			<div class="col-sm-2"><input type="text" class="form-control" id="movingexpense" value="0" data-toggle1="tooltip" title="Any expenses incurred in permanently moving for employment purposes"></div>
+			<div class="col-sm-2 statusquo">0</div>
+			<div class="col-sm-2 senatebill">0</div>		
+		</div>
+
+	</div>
+	
+	<div class="well credit">
+		<div class="row childcredit">
+			<label class="control-label col-sm-2">Child credit</label>
+			<div class="col-sm-2"></div>
+			<div class="col-sm-2 statusquo">0</div>
+			<div class="col-sm-2 senatebill">0</div>		
+		</div>
+
+		<div class="row nonchildcredit">
+			<label class="control-label col-sm-2">Non-child dependent credit</label>
+			<div class="col-sm-2"></div>
+			<div class="col-sm-2 statusquo">0</div>
+			<div class="col-sm-2 senatebill">0</div>		
+		</div>
+
+	</div>
+
+	<div class="well othertaxes">
+		<div class="row ACAPenalty">
+			<label class="control-label col-sm-2">ACA Penalty</label>
+			<div class="col-sm-2"></div>
+			<div class="col-sm-2 statusquo">0</div>
+			<div class="col-sm-2 senatebill">0</div>		
+		</div>
+
+	</div>
+	
+	<div class="well">
+		<div class="row taxest">
+			<label class="control-label col-sm-2">Regular Tax Estimate</label>
+			<div class="col-sm-2"></div>
+			<div class="col-sm-2 statusquo">Status quo</div>
+			<div class="col-sm-2 senatebill">Senate bill</div>		
+		</div>
+		<div class="row amtest">
+			<label class="control-label col-sm-2">AMT Tax Estimate</label>
+			<div class="col-sm-2"></div>
+			<div class="col-sm-2 statusquo">0</div>
+			<div class="col-sm-2 senatebill">0</div>		
+		</div>
+	</div>
+	
+    <script src="js/jquery.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/scripts.js"></script>
+
+	<script>
+	var taxbracket_statusquo=[
+		[[9325, 0, 0.1, 0],[37950,932.5, 0.15, 9325],[91900, 5226.25, 0.25, 37950],[191650, 18713.75, 0.28, 91900],[416700,46643.75, 0.33,191650], [418400,120910.25, 0.35,416700], [2000000,121505.25, 0.396,418400]],
+		[[13350,0, 0.1,0],[50800,1335, 0.15, 13350],[131200,6952.5,0.25,50800],[212500,27052.5,0.28,131200],[416700,49816.5,0.33,212500],[444550,117202.5,0.35,416700],[2000000,126950,0.396,444550]],
+		[[18650,0,0.1,0], [75900,1865,0.15, 18650], [153100,10452.5,0.25,75900],[233350,29752.5,0.28,153100],[416700,52222.5,0.33,233350],[470700,131628,0.35,416700],[2000000,131628,0.396,470700]],
+		[[9325,0,0.1,0],  [37950,932.5,0.15,9325],	[76550,5226.25,0.25,37950], [116675,14876.25,0.28,76550],[208350,26111.25,0.33,116675],[235350,56364,0.35,208350],[2000000,65814,0.396,235350]],
+	];
+	var stdded_statusquo=[6350, 9350, 12700, 6350];
+	var perex_statusquo=[261500,287650,313800,261500];
+	var itemded_statusquo=[261500,287650,313800,261500];
+	var childcredit_statusquo = [75000,75000,110000,55000];
+	var amtex_statusquo = [54300,54300,84500,42250];
+	var amtphaseout_statusquo = [120700,120700,160900,80450];
+	var amtbracket_statusquo = [
+					[[93900,0,0.26,0],[2000000,24414,0.28,93900]],
+					[[93900,0,0.26,0],[2000000,24414,0.28,93900]],
+					[[187800,0,0.26,0],[2000000,48828,0.28,187800]],
+					[[93900,0,0.26,0],[2000000,24414,0.28,93900]]
+	];
+	
+	var taxbracket_senatebill=[
+		[[9525,0,0.1,0],[38700,952.5,0.12,9525],[60000,4453.5,0.225,38700],[170000,9246, 0.25,60000],[200000,36746,0.325,170000],[500000,46496,0.35,200000],[2000000,151496,0.385,500000]],
+		[[13600,0,0.1,0],[51800,1360,0.12,13600],[60000,5944,0.225, 51800],[170000,7789,0.25,60000], [200000,35289,0.325,170000],[500000,45039,0.35,200000],[2000000,150039,0.385,500000]],
+		[[19050,0,0.1,0],[77400,1905,0.12,19050],[120000,8907,0.225,77400],[290000,18492,0.25,120000],[390000,60992,0.325,290000],[1000000,93492,0.35,390000],[2000000,306992,0.385,1000000]],
+		[[9525,0,0.1,0],[38700,952.5,0.12,9525],[60000,4453.5,0.225,38700],[145000,9246,0.25,60000],[195000,30496,0.325,145000],[500000,46746,0.35,195000],[2000000,153496,0.385,500000]]
+	];
+	var stdded_senatebill = [12000,18000,24000,12000];
+	var childcredit_senatebill = [500000,500000,1000000,500000];
+	
+	filingtype=0;
+	taxableincome=0;
+	$(document).ready(function(){
+		$('[data-toggle1="tooltip"]').tooltip();
+	});
+
+	$(".filingclass-item").click(function(e){
+		filingtype=parseInt($(this).data('id'));
+		$(".filingclass-selected").text($(this).text());
+		$(".stdded").find(".statusquo").text(stdded_statusquo[filingtype]);
+		$(".stdded").find(".senatebill").text(stdded_senatebill[filingtype]);
+		updatePersonalExemption();
+		refreshTax();
+		e.preventDefault();
+	});
+	$(".personalexemptioncount-item").click(function(e){
+		$(".personalexemptioncount-selected").text($(this).text());
+		updatePersonalExemption();
+		refreshTax();
+		e.preventDefault();
+	});
+	$(".ACApenaltyadultcount-item").click(function(e){
+		$(".ACApenaltyadultcount-selected").text($(this).text());
+		updateACAPenalty();
+		refreshTax();
+		e.preventDefault();
+	});
+	$(".ACApenaltychildcount-item").click(function(e){
+		$(".ACApenaltychildcount-selected").text($(this).text());
+		updateACAPenalty();
+		refreshTax();
+		e.preventDefault();
+	});
+	function updateACAPenalty(){
+		if (parseInt($(".ACApenaltyadultcount-selected").text())>0 || parseInt($(".ACApenaltychildcount-selected").text())>0)
+			$(".ACAPenalty").find(".statusquo").text(Math.max(0.025*taxableincome,Math.min(2085, 695*parseInt($(".ACApenaltyadultcount-selected").text())+ 347.5*parseInt($(".ACApenaltychildcount-selected").text()))));		
+		else
+			$(".ACAPenalty").find(".statusquo").text(0);		
+		$(".ACAPenalty").find(".senatebill").text(0);		
+	}
+	$(".childcount-item").click(function(e){
+		$(".childcount-selected").text($(this).text());
+		updateChildCredit(parseInt($(this).text()));
+		refreshTax();
+		e.preventDefault();
+	});
+	$(".nonchildcount-item").click(function(e){
+		$(".nonchildcount-selected").text($(this).text());
+		updateNonChildCredit(parseInt($(this).text()));
+		refreshTax();
+		e.preventDefault();
+	});
+	function updateChildCredit(){
+		$(".childcredit").find(".statusquo").text((1000-Math.max(0,(taxableincome-childcredit_statusquo[filingtype])/1000))*parseInt($(".childcount-selected").text()));
+		$(".childcredit").find(".senatebill").text((1650-Math.max(0,(taxableincome-childcredit_senatebill[filingtype])/1000))*parseInt($(".childcount-selected").text()));
+	}
+	function updateNonChildCredit(count){
+		$(".nonchildcredit").find(".statusquo").text(0);
+		$(".nonchildcredit").find(".senatebill").text((500-Math.max(0,(taxableincome-childcredit_senatebill[filingtype])/1000))*parseInt($(".nonchildcount-selected").text()));
+	}
+	$("#salariedincome").change(function(){
+		taxableincome = parseInt($("#salariedincome").val())+parseInt($("#passthruincome").val());
+		updateChildCredit();
+		updatePersonalExemption();
+		refreshTax();
+	});
+	$("#passthruincome").change(function(){
+		taxableincome = parseInt($("#salariedincome").val())+parseInt($("#passthruincome").val());
+		updateChildCredit();
+		updatePersonalExemption();
+		refreshTax();
+	});
+	function updatePersonalExemption(){
+		if (taxableincome<perex_statusquo[filingtype])
+			$(".personalexemption").find(".statusquo").text(4050*parseInt($(".personalexemptioncount-selected").text()));
+		else
+			$(".personalexemption").find(".statusquo").text(0);
+		$(".personalexemption").find(".senatebill").text("0");
+	}
+	$("#salt").change(function(){
+		$(".salt").find(".statusquo").text(parseInt($("#salt").val()));
+		$(".salt").find(".senatebill").text("0");
+		refreshTax();
+	});
+	$("#property").change(function(){
+		$(".property").find(".statusquo").text(parseInt($("#property").val()));
+		$(".property").find(".senatebill").text("0");
+		refreshTax();
+	});
+	$("#mortgage").change(function(){
+		$(".mortgage").find(".statusquo").text(parseInt($("#mortgage").val()));
+		$(".mortgage").find(".senatebill").text("0");
+		refreshTax();
+	});
+	$("#salt").change(function(){
+		$(".salt").find(".statusquo").text(parseInt($("#salt").val()));
+		$(".salt").find(".senatebill").text("0");
+		refreshTax();
+	});
+	$("#taxprep").change(function(){
+		$(".taxprep").find(".statusquo").text(parseInt($("#taxprep").val()));
+		$(".taxprep").find(".senatebill").text("0");
+		refreshTax();
+	});
+	$("#movingexpense").change(function(){
+		$(".movingexpense").find(".statusquo").text(parseInt($("#movingexpense").val()));
+		$(".movingexpense").find(".senatebill").text("0");
+		refreshTax();
+	});
+	function refreshTax(){
+		//alert(taxableincome);
+		//AGI1 = taxableincome - parseInt($(".personalexemption").find(".statusquo").text()) - parseInt($(".salt").find(".statusquo").text()) - parseInt($(".taxprep").find(".statusquo").text());
+		AGI1 = taxableincome - parseInt($(".personalexemption").find(".statusquo").text());
+		//alert(AGI1);
+		itemded=0;
+		$(".deduction").find(".statusquo").each(function (index){
+		itemded += parseInt($(this).text());
+		});
+		if (taxableincome > itemded_statusquo[filingtype])
+			itemded -= Math.min(0.02*itemded, 0.03*(taxableincome - itemded_statusquo[filingtype]));  //Item 7
+		AGI1 -= itemded;
+		//alert(AGI1);
+		AGI2 = taxableincome - parseInt($(".personalexemption").find(".statusquo").text())- parseInt($(".stdded").find(".statusquo").text());
+		if (AGI1<AGI2) AGI = AGI1;
+		else AGI = AGI2;
+		if (AGI<taxbracket_statusquo[filingtype][0][0]) TaxEst= taxbracket_statusquo[filingtype][0][1]+taxbracket_statusquo[filingtype][0][2]*(AGI-taxbracket_statusquo[filingtype][0][3]);
+		else if (AGI<taxbracket_statusquo[filingtype][1][0]) TaxEst= taxbracket_statusquo[filingtype][1][1]+taxbracket_statusquo[filingtype][1][2]*(AGI-taxbracket_statusquo[filingtype][1][3]);
+		else if (AGI<taxbracket_statusquo[filingtype][2][0]) TaxEst= taxbracket_statusquo[filingtype][2][1]+taxbracket_statusquo[filingtype][2][2]*(AGI-taxbracket_statusquo[filingtype][2][3]);
+		else if (AGI<taxbracket_statusquo[filingtype][3][0]) TaxEst= taxbracket_statusquo[filingtype][3][1]+taxbracket_statusquo[filingtype][3][2]*(AGI-taxbracket_statusquo[filingtype][3][3]);
+		else if (AGI<taxbracket_statusquo[filingtype][4][0]) TaxEst= taxbracket_statusquo[filingtype][4][1]+taxbracket_statusquo[filingtype][4][2]*(AGI-taxbracket_statusquo[filingtype][4][3]);
+		else if (AGI<taxbracket_statusquo[filingtype][5][0]) TaxEst= taxbracket_statusquo[filingtype][5][1]+taxbracket_statusquo[filingtype][5][2]*(AGI-taxbracket_statusquo[filingtype][5][3]);
+		else TaxEst= taxbracket_statusquo[filingtype][6][1]+taxbracket_statusquo[filingtype][6][2]*(AGI-taxbracket_statusquo[filingtype][6][3]);
+		
+		credits=0;
+		$(".credit").find(".statusquo").each(function (index){
+		credits += parseInt($(this).text());
+		});
+		TaxEst = Math.max(0,TaxEst-credits);
+		
+		othertaxes=0;
+		$(".othertaxes").find(".statusquo").each(function (index){
+		othertaxes += parseInt($(this).text());
+		});
+		TaxEst += othertaxes;
+		
+		$(".taxest").find(".statusquo").text(TaxEst);
+
+		AGI_amt = taxableincome - Math.max(0,amtex_statusquo[filingtype]-(taxableincome-amtphaseout_statusquo)*0.25);
+		AmtEst =0;
+		if (AGI_amt<amtbracket_statusquo[filingtype][0][0]) AmtEst= amtbracket_statusquo[filingtype][0][1]+amtbracket_statusquo[filingtype][0][2]*(AGI_amt-amtbracket_statusquo[filingtype][0][3]);
+		else if (AGI_amt<amtbracket_statusquo[filingtype][1][0]) AmtEst= amtbracket_statusquo[filingtype][1][1]+amtbracket_statusquo[filingtype][1][2]*(AGI_amt-taxbracket_statusquo[filingtype][1][3]);
+		$(".amtest").find(".statusquo").text(Math.max(0,AmtEst - TaxEst));
+
+		AGI1 = taxableincome;
+		AGI2 = taxableincome - parseInt($(".stdded").find(".senatebill").text());
+		if (AGI1<AGI2) AGI = AGI1;
+		else AGI = AGI2;
+		if (AGI<taxbracket_senatebill[filingtype][0][0]) TaxEst= taxbracket_senatebill[filingtype][0][1]+taxbracket_senatebill[filingtype][0][2]*(AGI-taxbracket_senatebill[filingtype][0][3]);
+		else if (AGI<taxbracket_senatebill[filingtype][1][0]) TaxEst= taxbracket_senatebill[filingtype][1][1]+taxbracket_senatebill[filingtype][1][2]*(AGI-taxbracket_senatebill[filingtype][1][3]);
+		else if (AGI<taxbracket_senatebill[filingtype][2][0]) TaxEst= taxbracket_senatebill[filingtype][2][1]+taxbracket_senatebill[filingtype][2][2]*(AGI-taxbracket_senatebill[filingtype][2][3]);
+		else if (AGI<taxbracket_senatebill[filingtype][3][0]) TaxEst= taxbracket_senatebill[filingtype][3][1]+taxbracket_senatebill[filingtype][3][2]*(AGI-taxbracket_senatebill[filingtype][3][3]);
+		else if (AGI<taxbracket_senatebill[filingtype][4][0]) TaxEst= taxbracket_senatebill[filingtype][4][1]+taxbracket_senatebill[filingtype][4][2]*(AGI-taxbracket_senatebill[filingtype][4][3]);
+		else if (AGI<taxbracket_senatebill[filingtype][5][0]) TaxEst= taxbracket_senatebill[filingtype][5][1]+taxbracket_senatebill[filingtype][5][2]*(AGI-taxbracket_senatebill[filingtype][5][3]);
+		else TaxEst= taxbracket_senatebill[filingtype][6][1]+taxbracket_senatebill[filingtype][6][2]*(AGI-taxbracket_senatebill[filingtype][6][3]);
+
+		credits=0;
+		$(".credit").find(".senatebill").each(function (index){
+		credits += parseInt($(this).text());
+		});
+		TaxEst = Math.max(0,TaxEst-credits);
+		
+		othertaxes=0;
+		$(".othertaxes").find(".senatebill").each(function (index){
+		othertaxes += parseInt($(this).text());
+		});
+		TaxEst += othertaxes;
+
+		$(".taxest").find(".senatebill").text(TaxEst);
+
+		}
+	</script>
+	</body>
+</html>
