@@ -20,12 +20,14 @@
 		
 	<div class="well">
 		<center><h1>Average Joe Tax Estimator</h1></center><br>
-		This is a simple client-side javascript that will give your estimate for status quo versus senate proposal. No data is collected and your privacy is protected unconditionally.
-		This is not meant to serve as a tax software but as a means to compare the insane number of tax overhaul proposals. The house bill will be added into a third column. 
-		Tax proposals related to a common man are included here. Though 2million is the income limit in this script, this will surely not help someone in that range.
-		Below guidelines are primarily taken from the draft posted online which devotes most of its time to corporate rate deduction. 
-		Passthru income and Estate taxes will be dealt with in future revisions to get a feel of how different tyes of income are treated.<br>
-		An example family of four with 2 children and earning 150k with a mortgage to pay is shown below.<br><br>
+		This is a simple client-side javascript that will give your estimate for status quo versus current proposals. No data is collected and your privacy is respected unconditionally.
+		This is not meant to serve as a tax software but as a means to compare the insane number of tax overhaul proposals.  <br><br>
+		Tax proposals related to a common man are included here. Though 2million is the income limit in this script, this will surely not help someone in that range because of deductions that someone in that range would make to keep the tax liability low. 
+		For example, someone making 2million is most probably going to have a pass thru and hence will get a bigger tax cut according to the plans in addition to, in all probability, real estate investment tax cuts.<br>
+		Below guidelines are primarily taken from drafts posted online which devote most of the time to corporate rate deduction.<br><br> 
+		Remember that the senate bill proposal (and subsequently the final bill) for individual's tax code (unlike the corporate tax cut) is applicable only until 2025. Thereafter, we will be back to Status quo unless the empire strikes back!
+		Passthru income and Estate taxes will be dealt with in future revisions to get a feel of how different tyes of income are treated.<br><br>
+		An example family of four with 2 children and earning 150k with a mortgage to pay is shown below. While you are at it try increasing income (and consequently the state tax) 2x or halving it to see the effect on final taxes. <br><br>
 		Last Updated: Dec 3, 2017, 02:26AM GMT
 	</div>
 	<div class="well">
@@ -193,16 +195,16 @@
 		<div class="row stdded">
 			<label class="control-label col-sm-2">Standard deduction</label>
 			<div class="col-sm-2"></div>
-			<div class="col-sm-2 statusquo">6350</div>
-			<div class="col-sm-2 senatebill">12000</div>		
-			<div class="col-sm-2 housebill">12200</div>		
+			<div class="col-sm-2 statusquo">$6350</div>
+			<div class="col-sm-2 senatebill">$12000</div>		
+			<div class="col-sm-2 housebill">$12200</div>		
 		</div>
 		<div class="row personalexemption">
 			<label class="control-label col-sm-2">Personal Exemption</label>
 			<div class="col-sm-2"></div>
-			<div class="col-sm-2 statusquo">4050</div>
-			<div class="col-sm-2 senatebill">0</div>		
-			<div class="col-sm-2 housebill">0</div>		
+			<div class="col-sm-2 statusquo">$4050</div>
+			<div class="col-sm-2 senatebill">$0</div>		
+			<div class="col-sm-2 housebill">$0</div>		
 		</div>
 	</div>
 
@@ -210,41 +212,65 @@
 		<div class="row salt">
 			<label for="salt" class="control-label col-sm-2">State income taxes</label>
 			<div class="col-sm-2"><input type="text" class="form-control" id="salt" value="0" data-toggle1="tooltip" title="Enter your Sales and Local Taxes to deduct, if any"></div>
-			<div class="col-sm-2 statusquo">0</div>
-			<div class="col-sm-2 senatebill">0</div>		
-			<div class="col-sm-2 housebill">0</div>		
+			<div class="col-sm-2 statusquo">$0</div>
+			<div class="col-sm-2 senatebill">$0</div>		
+			<div class="col-sm-2 housebill">$0</div>		
 		</div>
 
 		<div class="row property">
 			<label for="property" class="control-label col-sm-2">Local property taxes</label>
 			<div class="col-sm-2"><input type="text" class="form-control" id="property" value="0" data-toggle1="tooltip" title="Property taxes for your home"></div>
-			<div class="col-sm-2 statusquo">0</div>
-			<div class="col-sm-2 senatebill">0</div>		
-			<div class="col-sm-2 housebill">0</div>		
+			<div class="col-sm-2 statusquo">$0</div>
+			<div class="col-sm-2 senatebill">$0</div>		
+			<div class="col-sm-2 housebill">$0</div>		
 		</div>
 
 		<div class="row mortgage">
 			<label for="mortgage" class="control-label col-sm-2">Mortgage Interest</label>
 			<div class="col-sm-2"><input type="text" class="form-control" id="mortgage" value="0" data-toggle1="tooltip" title="Interest paid on your mortgage in an entire year"></div>
-			<div class="col-sm-2 statusquo">0</div>
-			<div class="col-sm-2 senatebill">0</div>		
-			<div class="col-sm-2 housebill">0</div>		
+			<div class="col-sm-2 statusquo">$0</div>
+			<div class="col-sm-2 senatebill">$0</div>		
+			<div class="col-sm-2 housebill">$0</div>		
+		</div>
+
+		<div class="row studentloan">
+			<label for="studentloan" class="control-label col-sm-2">Student Loan Interest</label>
+			<div class="col-sm-2"><input type="text" class="form-control" id="studentloan" value="0" data-toggle1="tooltip" title="Interest paid on your student loan repayment in an entire year"></div>
+			<div class="col-sm-2 statusquo">$0</div>
+			<div class="col-sm-2 senatebill">$0</div>		
+			<div class="col-sm-2 housebill">$0</div>		
+		</div>
+
+		<div class="row teacherexpense">
+			<label for="teacherexpense" class="control-label col-sm-2">Teacher Expenses</label>
+			<div class="col-sm-2"><input type="text" class="form-control" id="teacherexpense" value="0" data-toggle1="tooltip" title="Provide any expense you need to deduct as a teacher"></div>
+			<div class="col-sm-2 statusquo">$0</div>
+			<div class="col-sm-2 senatebill">$0</div>		
+			<div class="col-sm-2 housebill">$0</div>		
+		</div>
+
+		<div class="row medicalexpense">
+			<label for="medicalexpense" class="control-label col-sm-2">Annual Medical Expenses</label>
+			<div class="col-sm-2"><input type="text" class="form-control" id="medicalexpense" value="0" data-toggle1="tooltip" title="Include medical expenses in a year"></div>
+			<div class="col-sm-2 statusquo">$0</div>
+			<div class="col-sm-2 senatebill">$0</div>		
+			<div class="col-sm-2 housebill">$0</div>		
 		</div>
 
 		<div class="row taxprep">
 			<label for="taxprep" class="control-label col-sm-2">Tax preparation expense</label>
 			<div class="col-sm-2"><input type="text" class="form-control" id="taxprep" value="0" data-toggle1="tooltip" title="Enter tax preparation expense"></div>
-			<div class="col-sm-2 statusquo">0</div>
-			<div class="col-sm-2 senatebill">0</div>		
-			<div class="col-sm-2 housebill">0</div>		
+			<div class="col-sm-2 statusquo">$0</div>
+			<div class="col-sm-2 senatebill">$0</div>		
+			<div class="col-sm-2 housebill">$0</div>		
 		</div>
 
 		<div class="row movingexpense">
 			<label for="movingexpense" class="control-label col-sm-2">Expenses incurred in moving jobs</label>
 			<div class="col-sm-2"><input type="text" class="form-control" id="movingexpense" value="0" data-toggle1="tooltip" title="Any expenses incurred in permanently moving for employment purposes"></div>
-			<div class="col-sm-2 statusquo">0</div>
-			<div class="col-sm-2 senatebill">0</div>		
-			<div class="col-sm-2 housebill">0</div>		
+			<div class="col-sm-2 statusquo">$0</div>
+			<div class="col-sm-2 senatebill">$0</div>		
+			<div class="col-sm-2 housebill">$0</div>		
 		</div>
 
 	</div>
@@ -253,17 +279,17 @@
 		<div class="row childcredit">
 			<label class="control-label col-sm-2">Child credit</label>
 			<div class="col-sm-2"></div>
-			<div class="col-sm-2 statusquo">0</div>
-			<div class="col-sm-2 senatebill">0</div>		
-			<div class="col-sm-2 housebill">0</div>		
+			<div class="col-sm-2 statusquo">$0</div>
+			<div class="col-sm-2 senatebill">$0</div>		
+			<div class="col-sm-2 housebill">$0</div>		
 		</div>
 
 		<div class="row nonchildcredit">
 			<label class="control-label col-sm-2">Non-child dependent credit</label>
 			<div class="col-sm-2"></div>
-			<div class="col-sm-2 statusquo">0</div>
-			<div class="col-sm-2 senatebill">0</div>		
-			<div class="col-sm-2 housebill">0</div>		
+			<div class="col-sm-2 statusquo">$0</div>
+			<div class="col-sm-2 senatebill">$0</div>		
+			<div class="col-sm-2 housebill">$0</div>		
 		</div>
 
 	</div>
@@ -272,9 +298,9 @@
 		<div class="row ACAPenalty">
 			<label class="control-label col-sm-2">ACA Penalty</label>
 			<div class="col-sm-2"></div>
-			<div class="col-sm-2 statusquo">0</div>
-			<div class="col-sm-2 senatebill">0</div>		
-			<div class="col-sm-2 housebill">0</div>		
+			<div class="col-sm-2 statusquo">$0</div>
+			<div class="col-sm-2 senatebill">$0</div>		
+			<div class="col-sm-2 housebill">$0</div>		
 		</div>
 
 	</div>
@@ -290,9 +316,9 @@
 		<div class="row amtest">
 			<label class="control-label col-sm-2">AMT Tax Estimate</label>
 			<div class="col-sm-2"></div>
-			<div class="col-sm-2 statusquo">0</div>
-			<div class="col-sm-2 senatebill">0</div>		
-			<div class="col-sm-2 housebill">0</div>		
+			<div class="col-sm-2 statusquo">$0</div>
+			<div class="col-sm-2 senatebill">$0</div>		
+			<div class="col-sm-2 housebill">$0</div>		
 		</div>
 	</div>
 	
@@ -368,7 +394,7 @@
 		updateChildCredit();
 		$("#salt").val("12000").change();
 		$("#property").val("5000").change();
-		$("#mortgage").val("6000").change();
+		$("#mortgage").val("10000").change();
 		refreshTax();
 	}
 	
@@ -477,6 +503,27 @@
 		$(".mortgage").find(".housebill").text(num2dol(dol2num($("#mortgage").val())));
 		refreshTax();
 	});
+	$("#studentloan").change(function(){
+		$(".studentloan").find(".statusquo").text(num2dol(dol2num($("#studentloan").val())));
+		$(".studentloan").find(".senatebill").text(num2dol(dol2num($("#studentloan").val())));
+		$(".studentloan").find(".housebill").text("$0");
+		refreshTax();
+	});
+	$("#teacherexpense").change(function(){
+		$(".teacherexpense").find(".statusquo").text(num2dol(Math.min(250,dol2num($("#teacherexpense").val()))));
+		$(".teacherexpense").find(".senatebill").text(num2dol(Math.min(500,dol2num($("#teacherexpense").val()))));
+		$(".teacherexpense").find(".housebill").text("$0");
+		refreshTax();
+	});
+	$("#medicalexpense").change(function(){
+		updateMedicalExpense();
+		refreshTax();
+	});
+	function updateMedicalExpense(){
+		$(".medicalexpense").find(".statusquo").text(num2dol(Math.max(0,dol2num($("#medicalexpense").val()) - 0.1*income_statusquo)));
+		$(".medicalexpense").find(".senatebill").text(num2dol(Math.max(0,dol2num($("#medicalexpense").val()) - 0.075*income_statusquo)));
+		$(".medicalexpense").find(".housebill").text("$0");	
+	}
 	$("#taxprep").change(function(){
 		$(".taxprep").find(".statusquo").text(num2dol(dol2num($("#taxprep").val())));
 		$(".taxprep").find(".senatebill").text("$0");
@@ -490,9 +537,7 @@
 		refreshTax();
 	});
 	function refreshTax(){
-		//alert(income_statusquo);
-		//AGI1 = income_statusquo - dol2num($(".personalexemption").find(".statusquo").text()) - dol2num($(".salt").find(".statusquo").text()) - dol2num($(".taxprep").find(".statusquo").text());
-		//alert(AGI1);
+		
 		itemded=0;
 		$(".deduction").find(".statusquo").each(function (index){
 		itemded += dol2num($(this).text());
@@ -504,13 +549,13 @@
 		AGI2 = income_statusquo - dol2num($(".personalexemption").find(".statusquo").text())- dol2num($(".stdded").find(".statusquo").text());
 		if (AGI1<AGI2) AGI = AGI1;
 		else AGI = AGI2;
-		if (AGI<taxbracket_statusquo[filingtype][0][0]) TaxEst= taxbracket_statusquo[filingtype][0][1]+taxbracket_statusquo[filingtype][0][2]*(AGI-taxbracket_statusquo[filingtype][0][3]);
-		else if (AGI<taxbracket_statusquo[filingtype][1][0]) TaxEst= taxbracket_statusquo[filingtype][1][1]+taxbracket_statusquo[filingtype][1][2]*(AGI-taxbracket_statusquo[filingtype][1][3]);
-		else if (AGI<taxbracket_statusquo[filingtype][2][0]) TaxEst= taxbracket_statusquo[filingtype][2][1]+taxbracket_statusquo[filingtype][2][2]*(AGI-taxbracket_statusquo[filingtype][2][3]);
-		else if (AGI<taxbracket_statusquo[filingtype][3][0]) TaxEst= taxbracket_statusquo[filingtype][3][1]+taxbracket_statusquo[filingtype][3][2]*(AGI-taxbracket_statusquo[filingtype][3][3]);
-		else if (AGI<taxbracket_statusquo[filingtype][4][0]) TaxEst= taxbracket_statusquo[filingtype][4][1]+taxbracket_statusquo[filingtype][4][2]*(AGI-taxbracket_statusquo[filingtype][4][3]);
-		else if (AGI<taxbracket_statusquo[filingtype][5][0]) TaxEst= taxbracket_statusquo[filingtype][5][1]+taxbracket_statusquo[filingtype][5][2]*(AGI-taxbracket_statusquo[filingtype][5][3]);
-		else TaxEst= taxbracket_statusquo[filingtype][6][1]+taxbracket_statusquo[filingtype][6][2]*(AGI-taxbracket_statusquo[filingtype][6][3]);
+		if (AGI<taxbracket_statusquo[filingtype][0][0]) TaxEst_statusquo= taxbracket_statusquo[filingtype][0][1]+taxbracket_statusquo[filingtype][0][2]*(AGI-taxbracket_statusquo[filingtype][0][3]);
+		else if (AGI<taxbracket_statusquo[filingtype][1][0]) TaxEst_statusquo= taxbracket_statusquo[filingtype][1][1]+taxbracket_statusquo[filingtype][1][2]*(AGI-taxbracket_statusquo[filingtype][1][3]);
+		else if (AGI<taxbracket_statusquo[filingtype][2][0]) TaxEst_statusquo= taxbracket_statusquo[filingtype][2][1]+taxbracket_statusquo[filingtype][2][2]*(AGI-taxbracket_statusquo[filingtype][2][3]);
+		else if (AGI<taxbracket_statusquo[filingtype][3][0]) TaxEst_statusquo= taxbracket_statusquo[filingtype][3][1]+taxbracket_statusquo[filingtype][3][2]*(AGI-taxbracket_statusquo[filingtype][3][3]);
+		else if (AGI<taxbracket_statusquo[filingtype][4][0]) TaxEst_statusquo= taxbracket_statusquo[filingtype][4][1]+taxbracket_statusquo[filingtype][4][2]*(AGI-taxbracket_statusquo[filingtype][4][3]);
+		else if (AGI<taxbracket_statusquo[filingtype][5][0]) TaxEst_statusquo= taxbracket_statusquo[filingtype][5][1]+taxbracket_statusquo[filingtype][5][2]*(AGI-taxbracket_statusquo[filingtype][5][3]);
+		else TaxEst_statusquo= taxbracket_statusquo[filingtype][6][1]+taxbracket_statusquo[filingtype][6][2]*(AGI-taxbracket_statusquo[filingtype][6][3]);
 		//alert(dol2num($(".personalexemption").find(".statusquo").text()));
 		
 		credits=0;
@@ -518,21 +563,21 @@
 		credits += dol2num($(this).text());
 		});
 		//alert(credits);
-		TaxEst = Math.max(0,TaxEst - credits);
+		TaxEst_statusquo = Math.max(0,TaxEst_statusquo - credits);
 		
 		othertaxes=0;
 		$(".othertaxes").find(".statusquo").each(function (index){
 		othertaxes += dol2num($(this).text());
 		});
 		//alert(othertaxes);
-		TaxEst += othertaxes;
-		$(".taxest").find(".statusquo").text(num2dol(TaxEst));
+		TaxEst_statusquo += othertaxes;
+		$(".taxest").find(".statusquo").html("<b>"+num2dol(TaxEst_statusquo)+"</b>");
 
 		AGI_amt = income_statusquo - Math.max(0,amtex_statusquo[filingtype]-(income_statusquo-amtphaseout_statusquo)*0.25);
 		AmtEst =0;
 		if (AGI_amt<amtbracket_statusquo[filingtype][0][0]) AmtEst= amtbracket_statusquo[filingtype][0][1]+amtbracket_statusquo[filingtype][0][2]*(AGI_amt-amtbracket_statusquo[filingtype][0][3]);
 		else if (AGI_amt<amtbracket_statusquo[filingtype][1][0]) AmtEst= amtbracket_statusquo[filingtype][1][1]+amtbracket_statusquo[filingtype][1][2]*(AGI_amt-taxbracket_statusquo[filingtype][1][3]);
-		$(".amtest").find(".statusquo").text(num2dol(Math.max(0,AmtEst - TaxEst)));
+		$(".amtest").find(".statusquo").text(num2dol(Math.max(0,AmtEst - TaxEst_statusquo)));
 
 		
 		itemded=0;
@@ -545,29 +590,33 @@
 
 		if (AGI1<AGI2) AGI = AGI1;
 		else AGI = AGI2;
-		if (AGI<taxbracket_senatebill[filingtype][0][0]) TaxEst= taxbracket_senatebill[filingtype][0][1]+taxbracket_senatebill[filingtype][0][2]*(AGI-taxbracket_senatebill[filingtype][0][3]);
-		else if (AGI<taxbracket_senatebill[filingtype][1][0]) TaxEst= taxbracket_senatebill[filingtype][1][1]+taxbracket_senatebill[filingtype][1][2]*(AGI-taxbracket_senatebill[filingtype][1][3]);
-		else if (AGI<taxbracket_senatebill[filingtype][2][0]) TaxEst= taxbracket_senatebill[filingtype][2][1]+taxbracket_senatebill[filingtype][2][2]*(AGI-taxbracket_senatebill[filingtype][2][3]);
-		else if (AGI<taxbracket_senatebill[filingtype][3][0]) TaxEst= taxbracket_senatebill[filingtype][3][1]+taxbracket_senatebill[filingtype][3][2]*(AGI-taxbracket_senatebill[filingtype][3][3]);
-		else if (AGI<taxbracket_senatebill[filingtype][4][0]) TaxEst= taxbracket_senatebill[filingtype][4][1]+taxbracket_senatebill[filingtype][4][2]*(AGI-taxbracket_senatebill[filingtype][4][3]);
-		else if (AGI<taxbracket_senatebill[filingtype][5][0]) TaxEst= taxbracket_senatebill[filingtype][5][1]+taxbracket_senatebill[filingtype][5][2]*(AGI-taxbracket_senatebill[filingtype][5][3]);
-		else TaxEst= taxbracket_senatebill[filingtype][6][1]+taxbracket_senatebill[filingtype][6][2]*(AGI-taxbracket_senatebill[filingtype][6][3]);
+		if (AGI<taxbracket_senatebill[filingtype][0][0]) TaxEst_senatebill= taxbracket_senatebill[filingtype][0][1]+taxbracket_senatebill[filingtype][0][2]*(AGI-taxbracket_senatebill[filingtype][0][3]);
+		else if (AGI<taxbracket_senatebill[filingtype][1][0]) TaxEst_senatebill= taxbracket_senatebill[filingtype][1][1]+taxbracket_senatebill[filingtype][1][2]*(AGI-taxbracket_senatebill[filingtype][1][3]);
+		else if (AGI<taxbracket_senatebill[filingtype][2][0]) TaxEst_senatebill= taxbracket_senatebill[filingtype][2][1]+taxbracket_senatebill[filingtype][2][2]*(AGI-taxbracket_senatebill[filingtype][2][3]);
+		else if (AGI<taxbracket_senatebill[filingtype][3][0]) TaxEst_senatebill= taxbracket_senatebill[filingtype][3][1]+taxbracket_senatebill[filingtype][3][2]*(AGI-taxbracket_senatebill[filingtype][3][3]);
+		else if (AGI<taxbracket_senatebill[filingtype][4][0]) TaxEst_senatebill= taxbracket_senatebill[filingtype][4][1]+taxbracket_senatebill[filingtype][4][2]*(AGI-taxbracket_senatebill[filingtype][4][3]);
+		else if (AGI<taxbracket_senatebill[filingtype][5][0]) TaxEst_senatebill= taxbracket_senatebill[filingtype][5][1]+taxbracket_senatebill[filingtype][5][2]*(AGI-taxbracket_senatebill[filingtype][5][3]);
+		else TaxEst_senatebill= taxbracket_senatebill[filingtype][6][1]+taxbracket_senatebill[filingtype][6][2]*(AGI-taxbracket_senatebill[filingtype][6][3]);
 
 		credits=0;
 		$(".credit").find(".senatebill").each(function (index){
 		credits += dol2num($(this).text());
 		});
-		TaxEst = Math.max(0,TaxEst - credits);
+		TaxEst_senatebill = Math.max(0,TaxEst_senatebill - credits);
 		
 		othertaxes=0;
 		$(".othertaxes").find(".senatebill").each(function (index){
 		othertaxes += dol2num($(this).text());
 		});
-		TaxEst += othertaxes;
-		//alert(TaxEst);
+		TaxEst_senatebill += othertaxes;
+		//alert(TaxEst_senatebill);
 
-		$(".taxest").find(".senatebill").text(num2dol(TaxEst));
-
+		if (TaxEst_senatebill>TaxEst_statusquo)
+			$(".taxest").find(".senatebill").html("<span style=\"font-weight:bold;color:red\">"+num2dol(TaxEst_senatebill)+"</span>");
+		else
+			$(".taxest").find(".senatebill").html("<span style=\"font-weight:bold;color:green\">"+num2dol(TaxEst_senatebill)+"</span>");
+		
+		
 		itemded=0;
 		$(".deduction").find(".housebill").each(function (index){
 		itemded += dol2num($(this).text());
@@ -578,26 +627,29 @@
 
 		if (AGI1<AGI2) AGI = AGI1;
 		else AGI = AGI2;
-		if (AGI<taxbracket_housebill[filingtype][0][0]) TaxEst= taxbracket_housebill[filingtype][0][1]+taxbracket_housebill[filingtype][0][2]*(AGI-taxbracket_housebill[filingtype][0][3]);
-		else if (AGI<taxbracket_housebill[filingtype][1][0]) TaxEst= taxbracket_housebill[filingtype][1][1]+taxbracket_housebill[filingtype][1][2]*(AGI-taxbracket_housebill[filingtype][1][3]);
-		else if (AGI<taxbracket_housebill[filingtype][2][0]) TaxEst= taxbracket_housebill[filingtype][2][1]+taxbracket_housebill[filingtype][2][2]*(AGI-taxbracket_housebill[filingtype][2][3]);
-		else if (AGI<taxbracket_housebill[filingtype][3][0]) TaxEst= taxbracket_housebill[filingtype][3][1]+taxbracket_housebill[filingtype][3][2]*(AGI-taxbracket_housebill[filingtype][3][3]);
-		else TaxEst= taxbracket_housebill[filingtype][4][1]+taxbracket_housebill[filingtype][4][2]*(AGI-taxbracket_housebill[filingtype][4][3]);
+		if (AGI<taxbracket_housebill[filingtype][0][0]) TaxEst_housebill= taxbracket_housebill[filingtype][0][1]+taxbracket_housebill[filingtype][0][2]*(AGI-taxbracket_housebill[filingtype][0][3]);
+		else if (AGI<taxbracket_housebill[filingtype][1][0]) TaxEst_housebill= taxbracket_housebill[filingtype][1][1]+taxbracket_housebill[filingtype][1][2]*(AGI-taxbracket_housebill[filingtype][1][3]);
+		else if (AGI<taxbracket_housebill[filingtype][2][0]) TaxEst_housebill= taxbracket_housebill[filingtype][2][1]+taxbracket_housebill[filingtype][2][2]*(AGI-taxbracket_housebill[filingtype][2][3]);
+		else if (AGI<taxbracket_housebill[filingtype][3][0]) TaxEst_housebill= taxbracket_housebill[filingtype][3][1]+taxbracket_housebill[filingtype][3][2]*(AGI-taxbracket_housebill[filingtype][3][3]);
+		else TaxEst_housebill= taxbracket_housebill[filingtype][4][1]+taxbracket_housebill[filingtype][4][2]*(AGI-taxbracket_housebill[filingtype][4][3]);
 
 		credits=0;
 		$(".credit").find(".housebill").each(function (index){
 		credits += dol2num($(this).text());
 		});
-		TaxEst = Math.max(0,TaxEst - credits);
+		TaxEst_housebill = Math.max(0,TaxEst_housebill - credits);
 		
 		othertaxes=0;
 		$(".othertaxes").find(".housebill").each(function (index){
 		othertaxes += dol2num($(this).text());
 		});
-		TaxEst += othertaxes;
-		//alert(TaxEst);
-
-		$(".taxest").find(".housebill").text(num2dol(TaxEst));
+		TaxEst_housebill += othertaxes;
+		//alert(TaxEst_housebill);
+		
+		if (TaxEst_housebill>TaxEst_statusquo)
+			$(".taxest").find(".housebill").html("<span style=\"font-weight:bold;color:red\">"+num2dol(TaxEst_housebill)+"</span>");
+		else
+			$(".taxest").find(".housebill").html("<span style=\"font-weight:bold;color:green\">"+num2dol(TaxEst_housebill)+"</span>");
 		}
 	</script>
 	</body>
