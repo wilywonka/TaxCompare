@@ -4,6 +4,9 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta http-equiv='cache-control' content='no-cache'>
+	<meta http-equiv='expires' content='0'>
+	<meta http-equiv='pragma' content='no-cache'>
 
     <title>TaxCompare!</title>
 
@@ -28,7 +31,7 @@
 		Many of these provisions in the final bill are applicable only until 2025. Note the percentage change in taxes way below which is 0% (you read it right!) for most people compared to 14% reduction in taxes for companies<br><br>
 		Passthru income and Estate taxes will be dealt with in future revisions to get a feel of how different tyes of income are treated.<br><br>
 		An example family of four with 2 children and earning 150k with a mortgage to pay is shown below. While you are at it try increasing income (and consequently the state tax) 2x or halving it to see the effect on final taxes. <br><br>
-		Last Updated: Dec 16, 2017, 05:30AM GMT
+		Last Updated: Dec 16, 2017, 08:30PM GMT
 	</div>
 	<div class="well">
 		<div class="row filingclass">
@@ -752,12 +755,12 @@
 		if (TaxEst_senatebill>TaxEst_statusquo)
 		{
 			$(".taxest").find(".senatebill").html("<span style=\"font-weight:bold;color:red\">"+num2dol(TaxEst_senatebill)+"</span>");
-			$(".taxcut").find(".senatebill").html("<span style=\"font-weight:bold;color:red\">"+((TaxEst_senatebill-TaxEst_statusquo)/income_statusquo).toFixed(2)+"% Increase</span>");
+			$(".taxcut").find(".senatebill").html("<span style=\"font-weight:bold;color:red\">"+((TaxEst_senatebill-TaxEst_statusquo)/income_statusquo*100).toFixed(2)+"% Increase</span>");
 		}
 		else
 		{
 			$(".taxest").find(".senatebill").html("<span style=\"font-weight:bold;color:green\">"+num2dol(TaxEst_senatebill)+"</span>");
-			$(".taxcut").find(".senatebill").html("<span style=\"font-weight:bold;color:green\">"+((TaxEst_statusquo-TaxEst_senatebill)/income_statusquo).toFixed(2)+"% Cut</span>");
+			$(".taxcut").find(".senatebill").html("<span style=\"font-weight:bold;color:green\">"+((TaxEst_statusquo-TaxEst_senatebill)/income_statusquo*100).toFixed(2)+"% Cut</span>");
 		}
 		
 		itemded=0;
@@ -792,12 +795,12 @@
 		if (TaxEst_housebill>TaxEst_statusquo)
 		{
 			$(".taxest").find(".housebill").html("<span style=\"font-weight:bold;color:red\">"+num2dol(TaxEst_housebill)+"</span>");
-			$(".taxcut").find(".housebill").html("<span style=\"font-weight:bold;color:red\">"+((TaxEst_housebill-TaxEst_statusquo)/income_statusquo).toFixed(2)+"% Increase</span>");
+			$(".taxcut").find(".housebill").html("<span style=\"font-weight:bold;color:red\">"+((TaxEst_housebill-TaxEst_statusquo)/income_statusquo*100).toFixed(2)+"% Increase</span>");
 		}
 		else
 		{
 			$(".taxest").find(".housebill").html("<span style=\"font-weight:bold;color:green\">"+num2dol(TaxEst_housebill)+"</span>");
-			$(".taxcut").find(".housebill").html("<span style=\"font-weight:bold;color:green\">"+((TaxEst_statusquo-TaxEst_housebill)/income_statusquo).toFixed(2)+"% Cut</span>");
+			$(".taxcut").find(".housebill").html("<span style=\"font-weight:bold;color:green\">"+((TaxEst_statusquo-TaxEst_housebill)/income_statusquo*100).toFixed(2)+"% Cut</span>");
 		}
 
 
@@ -835,12 +838,12 @@
 		if (TaxEst_finalbill>TaxEst_statusquo)
 		{
 			$(".taxest").find(".finalbill").html("<span style=\"font-weight:bold;color:red\">"+num2dol(TaxEst_finalbill)+"</span>");
-			$(".taxcut").find(".finalbill").html("<span style=\"font-weight:bold;color:red\">"+((TaxEst_finalbill-TaxEst_statusquo)/income_statusquo).toFixed(2)+"% Increase</span>");
+			$(".taxcut").find(".finalbill").html("<span style=\"font-weight:bold;color:red\">"+((TaxEst_finalbill-TaxEst_statusquo)/income_statusquo*100).toFixed(2)+"% Increase</span>");
 		}
 		else
 		{
 			$(".taxest").find(".finalbill").html("<span style=\"font-weight:bold;color:green\">"+num2dol(TaxEst_finalbill)+"</span>");
-			$(".taxcut").find(".finalbill").html("<span style=\"font-weight:bold;color:green\">"+((TaxEst_statusquo-TaxEst_finalbill)/income_statusquo).toFixed(2)+"% Cut</span>");
+			$(".taxcut").find(".finalbill").html("<span style=\"font-weight:bold;color:green\">"+((TaxEst_statusquo-TaxEst_finalbill)/income_statusquo*100).toFixed(2)+"% Cut</span>");
 		}
 		
 		
