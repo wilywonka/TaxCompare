@@ -25,10 +25,10 @@
 		Tax proposals related to a common man are included here. Though 2million is the income limit in this script, this will surely not help someone in that range because of deductions that someone in that range would make to keep the tax liability low. 
 		For example, someone making 2million is most probably going to have a pass thru and hence will get a bigger tax cut according to the plans in addition to, in all probability, real estate investment tax cuts.<br>
 		Below guidelines are primarily taken from drafts posted online which devote most of the time to corporate rate deduction.<br><br> 
-		Remember that the senate bill proposal (and subsequently the final bill) for individual's tax code (unlike the corporate tax cut) is applicable only until 2025. Thereafter, we will be back to Status quo unless the empire strikes back!
+		Many of these provisions in the final bill are applicable only until 2025. Note the percentage change in taxes way below which is 0% (you read it right!) for most people compared to 14% reduction in taxes for companies<br><br>
 		Passthru income and Estate taxes will be dealt with in future revisions to get a feel of how different tyes of income are treated.<br><br>
 		An example family of four with 2 children and earning 150k with a mortgage to pay is shown below. While you are at it try increasing income (and consequently the state tax) 2x or halving it to see the effect on final taxes. <br><br>
-		Last Updated: Dec 16, 2017, 05:00AM GMT
+		Last Updated: Dec 16, 2017, 05:30AM GMT
 	</div>
 	<div class="well">
 		<div class="row filingclass">
@@ -393,6 +393,14 @@
 			<div class="col-sm-2 housebill">House bill</div>		
 			<div class="col-sm-2 finalbill">Final bill</div>		
 		</div>
+		<div class="row taxcut">
+			<label class="control-label col-sm-2">Percent change</label>
+			<div class="col-sm-2"></div>
+			<div class="col-sm-2 statusquo"></div>
+			<div class="col-sm-2 senatebill">Senate bill</div>		
+			<div class="col-sm-2 housebill">House bill</div>		
+			<div class="col-sm-2 finalbill">Final bill</div>		
+		</div>
 		<div class="row amtest">
 			<label class="control-label col-sm-2">AMT Tax Estimate</label>
 			<div class="col-sm-2"></div>
@@ -742,10 +750,15 @@
 		//alert(TaxEst_senatebill);
 
 		if (TaxEst_senatebill>TaxEst_statusquo)
+		{
 			$(".taxest").find(".senatebill").html("<span style=\"font-weight:bold;color:red\">"+num2dol(TaxEst_senatebill)+"</span>");
+			$(".taxcut").find(".senatebill").html("<span style=\"font-weight:bold;color:red\">"+((TaxEst_senatebill-TaxEst_statusquo)/income_statusquo).toFixed(2)+"% Increase</span>");
+		}
 		else
+		{
 			$(".taxest").find(".senatebill").html("<span style=\"font-weight:bold;color:green\">"+num2dol(TaxEst_senatebill)+"</span>");
-		
+			$(".taxcut").find(".senatebill").html("<span style=\"font-weight:bold;color:green\">"+((TaxEst_statusquo-TaxEst_senatebill)/income_statusquo).toFixed(2)+"% Cut</span>");
+		}
 		
 		itemded=0;
 		$(".deduction").find(".housebill").each(function (index){
@@ -777,9 +790,15 @@
 		//alert(TaxEst_housebill);
 		
 		if (TaxEst_housebill>TaxEst_statusquo)
+		{
 			$(".taxest").find(".housebill").html("<span style=\"font-weight:bold;color:red\">"+num2dol(TaxEst_housebill)+"</span>");
+			$(".taxcut").find(".housebill").html("<span style=\"font-weight:bold;color:red\">"+((TaxEst_housebill-TaxEst_statusquo)/income_statusquo).toFixed(2)+"% Increase</span>");
+		}
 		else
+		{
 			$(".taxest").find(".housebill").html("<span style=\"font-weight:bold;color:green\">"+num2dol(TaxEst_housebill)+"</span>");
+			$(".taxcut").find(".housebill").html("<span style=\"font-weight:bold;color:green\">"+((TaxEst_statusquo-TaxEst_housebill)/income_statusquo).toFixed(2)+"% Cut</span>");
+		}
 
 
 		itemded=0;
@@ -814,9 +833,15 @@
 		//alert(TaxEst_finalbill);
 
 		if (TaxEst_finalbill>TaxEst_statusquo)
+		{
 			$(".taxest").find(".finalbill").html("<span style=\"font-weight:bold;color:red\">"+num2dol(TaxEst_finalbill)+"</span>");
+			$(".taxcut").find(".finalbill").html("<span style=\"font-weight:bold;color:red\">"+((TaxEst_finalbill-TaxEst_statusquo)/income_statusquo).toFixed(2)+"% Increase</span>");
+		}
 		else
+		{
 			$(".taxest").find(".finalbill").html("<span style=\"font-weight:bold;color:green\">"+num2dol(TaxEst_finalbill)+"</span>");
+			$(".taxcut").find(".finalbill").html("<span style=\"font-weight:bold;color:green\">"+((TaxEst_statusquo-TaxEst_finalbill)/income_statusquo).toFixed(2)+"% Cut</span>");
+		}
 		
 		
 	}
