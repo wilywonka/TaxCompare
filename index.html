@@ -28,10 +28,10 @@
 		Tax proposals related to a common man are included here. Though 2million is the income limit in this script, this will surely not help someone in that range because of deductions that someone in that range would make to keep the tax liability low. 
 		For example, someone making 2million is most probably going to have a pass thru and hence will get a bigger tax cut according to the plans in addition to, in all probability, real estate investment tax cuts.<br>
 		Below guidelines are primarily taken from drafts posted online which devote most of the time to corporate rate deduction.<br><br> 
-		Many of these provisions in the final bill are applicable only until 2025. Note the percentage change in taxes way below which is 0% (you read it right!) for most people compared to 14% reduction in taxes for companies<br><br>
+		Many of these provisions in the final bill are applicable only until 2025. Note the percentage change in taxes way below is negligible for most people compared to 14% reduction in taxes for companies<br><br>
 		Passthru income and Estate taxes will be dealt with in future revisions to get a feel of how different tyes of income are treated.<br><br>
 		An example family of four with 2 children and earning 150k with a mortgage to pay is shown below. While you are at it try increasing income (and consequently the state tax) 2x or halving it to see the effect on final taxes. <br><br>
-		Last Updated: Dec 16, 2017, 08:30PM GMT
+		Last Updated: Dec 20, 2017, 05:40AM GMT
 	</div>
 	<div class="well">
 		<div class="row filingclass">
@@ -129,15 +129,16 @@
 		
 		<div class="row personalexemptioncount">
 			<label for="personalexemptioncount" class="control-label col-sm-2">Personal exemption count</label>
-			<div class="col-sm-2"  data-toggle1="tooltip" data-placement="top" title="Include yourself, spouse and dependents subject to withholding rules">
+			<div class="col-sm-2"  data-toggle1="tooltip" data-placement="top" title="Include your dependents subject to withholding rules">
 				<div class="btn-group">
 					<button class="btn btn-default personalexemptioncount-selected" id="personalexemptioncount">
-						1
+						0
 					</button> 
 					<button data-toggle="dropdown" class="btn btn-default dropdown-toggle">
 						<span class="caret"></span>
 					</button>
 					<ul class="dropdown-menu">
+						<li> <a href="#" class="personalexemptioncount-item" data-id="0">0</a> </li>
 						<li> <a href="#" class="personalexemptioncount-item" data-id="1">1</a> </li>
 						<li> <a href="#" class="personalexemptioncount-item" data-id="2">2</a> </li>
 						<li> <a href="#" class="personalexemptioncount-item" data-id="3">3</a> </li>
@@ -491,7 +492,7 @@
 		$(".filingclass-selected").text("Married Individuals Filing Jointly").change();
 		filingtype = 2;
 		updateStdDeduction();
-		$(".personalexemptioncount-selected").text("4");
+		$(".personalexemptioncount-selected").text("2");
 		updatePersonalExemption();
 		$(".childcount-selected").text("2");
 		updateChildCredit();
