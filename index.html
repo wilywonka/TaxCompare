@@ -31,7 +31,7 @@
 		Many of these provisions in the final bill are applicable only until 2025. Note the percentage change in taxes way below is negligible for most people compared to 14% reduction in taxes for companies<br><br>
 		Passthru income and Estate taxes will be dealt with in future revisions to get a feel of how different tyes of income are treated.<br><br>
 		An example family of four with 2 children and earning 150k with a mortgage to pay is shown below. While you are at it try increasing income (and consequently the state tax) 2x or halving it to see the effect on final taxes. <br><br>
-		Last Updated: Dec 20, 2017, 05:40AM GMT
+		Last Updated: Dec 22, 2017, 03:00AM GMT
 	</div>
 	<div class="well">
 		<div class="row filingclass">
@@ -127,30 +127,6 @@
 			</div>
 		</div-->
 		
-		<div class="row personalexemptioncount">
-			<label for="personalexemptioncount" class="control-label col-sm-2">Personal exemption count</label>
-			<div class="col-sm-2"  data-toggle1="tooltip" data-placement="top" title="Include your dependents subject to withholding rules">
-				<div class="btn-group">
-					<button class="btn btn-default personalexemptioncount-selected" id="personalexemptioncount">
-						0
-					</button> 
-					<button data-toggle="dropdown" class="btn btn-default dropdown-toggle">
-						<span class="caret"></span>
-					</button>
-					<ul class="dropdown-menu">
-						<li> <a href="#" class="personalexemptioncount-item" data-id="0">0</a> </li>
-						<li> <a href="#" class="personalexemptioncount-item" data-id="1">1</a> </li>
-						<li> <a href="#" class="personalexemptioncount-item" data-id="2">2</a> </li>
-						<li> <a href="#" class="personalexemptioncount-item" data-id="3">3</a> </li>
-						<li> <a href="#" class="personalexemptioncount-item" data-id="4">4</a> </li>
-						<li> <a href="#" class="personalexemptioncount-item" data-id="5">5</a> </li>
-						<li> <a href="#" class="personalexemptioncount-item" data-id="6">6</a> </li>
-						<li> <a href="#" class="personalexemptioncount-item" data-id="7">7</a> </li>
-					</ul>
-				</div>
-			</div>
-		</div>
-
 		<div class="row childcount">
 			<label for="childcount" class="control-label col-sm-2">Dependent children</label>
 			<div class="col-sm-2"  data-toggle1="tooltip"  data-placement="top" title="Count number of children qualifying for credit">			
@@ -173,7 +149,7 @@
 		</div>
 		<div class="row nonchildcount">
 			<label for="nonchildcount" class="control-label col-sm-2">Dependents who are not children</label>
-			<div class="col-sm-2"  data-toggle1="tooltip"  data-placement="top" title="Count dependents who dont count as qualifying children">			
+			<div class="col-sm-2"  data-toggle1="tooltip"  data-placement="top" title="Count dependents who dont count as qualifying children. Dont include your spouse if filing jointly">			
 				<div class="btn-group">
 					<button class="btn btn-default nonchildcount-selected" id="nonchildcount">
 						0
@@ -192,8 +168,8 @@
 			</div>
 		</div>
 		<div class="row ACApenaltyadultcount">
-			<label for="ACApenaltyadultcount" class="control-label col-sm-2">Adults without health insurance</label>
-			<div class="col-sm-2"  data-toggle1="tooltip" data-placement="top" title="How many adults didnt have health insurance for atleast 3 entire calendar months">
+			<label for="ACApenaltyadultcount" class="control-label col-sm-2">Dependent adults without health insurance</label>
+			<div class="col-sm-2"  data-toggle1="tooltip" data-placement="top" title="How many adults among the dependents didnt have health insurance for atleast 3 entire calendar months">
 				<div class="btn-group">
 					<button class="btn btn-default ACApenaltyadultcount-selected" id="ACApenaltyadultcount">
 						0
@@ -216,7 +192,7 @@
 		</div>
 		<div class="row ACApenaltychildcount">
 			<label for="ACApenaltychildcount" class="control-label col-sm-2">Children without health insurance</label>
-			<div class="col-sm-2"  data-toggle1="tooltip" data-placement="top" title="How many children didnt have health insurance for atleast 3 entire calendar months">
+			<div class="col-sm-2"  data-toggle1="tooltip" data-placement="top" title="How many children among dependents listed above didnt have health insurance for atleast 3 entire calendar months">
 				<div class="btn-group">
 					<button class="btn btn-default ACApenaltychildcount-selected" id="ACApenaltychildcount">
 						0
@@ -311,6 +287,15 @@
 		<div class="row studentloan">
 			<label for="studentloan" class="control-label col-sm-2">Student Loan Interest</label>
 			<div class="col-sm-2"><input type="text" class="form-control" id="studentloan" value="0" data-toggle1="tooltip" title="Interest paid on your student loan repayment in an entire year"></div>
+			<div class="col-sm-2 statusquo">$0</div>
+			<div class="col-sm-2 senatebill">$0</div>		
+			<div class="col-sm-2 housebill">$0</div>		
+			<div class="col-sm-2 finalbill">$0</div>		
+		</div>
+
+		<div class="row charity">
+			<label for="charity" class="control-label col-sm-2">Charitable contribution</label>
+			<div class="col-sm-2"><input type="text" class="form-control" id="charity" value="0" data-toggle1="tooltip" title="Provide any charitable contribution"></div>
 			<div class="col-sm-2 statusquo">$0</div>
 			<div class="col-sm-2 senatebill">$0</div>		
 			<div class="col-sm-2 housebill">$0</div>		
@@ -492,10 +477,10 @@
 		$(".filingclass-selected").text("Married Individuals Filing Jointly").change();
 		filingtype = 2;
 		updateStdDeduction();
-		$(".personalexemptioncount-selected").text("2");
-		updatePersonalExemption();
+		//$(".personalexemptioncount-selected").text("2");
 		$(".childcount-selected").text("2");
 		updateChildCredit();
+		updatePersonalExemption();
 		$("#salt").val("12000").change();
 		$("#property").val("5000").change();
 		$("#mortgage").val("10000").change();
@@ -523,12 +508,6 @@
 		$(".stdded").find(".housebill").text(num2dol(stdded_housebill[filingtype]));
 		$(".stdded").find(".finalbill").text(num2dol(stdded_finalbill[filingtype]));
 	}
-	$(".personalexemptioncount-item").click(function(e){
-		$(".personalexemptioncount-selected").text($(this).text());
-		updatePersonalExemption();
-		refreshTax();
-		e.preventDefault();
-	});
 	$(".ACApenaltyadultcount-item").click(function(e){
 		$(".ACApenaltyadultcount-selected").text($(this).text());
 		updateACAPenalty();
@@ -556,12 +535,14 @@
 	$(".childcount-item").click(function(e){
 		$(".childcount-selected").text($(this).text());
 		updateChildCredit();
+		updatePersonalExemption();
 		refreshTax();
 		e.preventDefault();
 	});
 	$(".nonchildcount-item").click(function(e){
 		$(".nonchildcount-selected").text($(this).text());
 		updateNonChildCredit();
+		updatePersonalExemption();
 		refreshTax();
 		e.preventDefault();
 	});
@@ -593,8 +574,10 @@
 		income_statusquo = dol2num($("#salariedincome").val())+dol2num($("#passthruincome").val());	
 	}
 	function updatePersonalExemption(){
+		var temp = dol2num($(".nonchildcount-selected").text()) + dol2num($(".childcount-selected").text());
+		//alert($(".childcount-selected").text());
 		if (income_statusquo<perex_statusquo[filingtype])
-			$(".personalexemption").find(".statusquo").text(num2dol(4050*dol2num($(".personalexemptioncount-selected").text())));
+			$(".personalexemption").find(".statusquo").text(num2dol(4050*temp));
 		else
 			$(".personalexemption").find(".statusquo").text("$0");
 		$(".personalexemption").find(".senatebill").text("$0");
@@ -647,6 +630,13 @@
 		$(".studentloan").find(".finalbill").text(num2dol(Math.min(2500, dol2num($("#studentloan").val()))));
 		refreshTax();
 	});
+	$("#charity").change(function(){
+		$(".charity").find(".statusquo").text(num2dol(dol2num($("#charity").val())));
+		$(".charity").find(".senatebill").text(num2dol(dol2num($("#charity").val())));
+		$(".charity").find(".housebill").text(num2dol(dol2num($("#charity").val())));
+		$(".charity").find(".finalbill").text(num2dol(dol2num($("#charity").val())));
+		refreshTax();
+	});
 	$("#teacherexpense").change(function(){
 		$(".teacherexpense").find(".statusquo").text(num2dol(Math.min(250,dol2num($("#teacherexpense").val()))));
 		$(".teacherexpense").find(".senatebill").text(num2dol(Math.min(500,dol2num($("#teacherexpense").val()))));
@@ -685,7 +675,7 @@
 		itemded += dol2num($(this).text());
 		});
 		if (income_statusquo > itemded_statusquo[filingtype])
-			itemded -= Math.min(0.02*itemded, 0.03*(income_statusquo - itemded_statusquo[filingtype]));  //Item 7
+			itemded -= Math.max(0.02*itemded, 0.03*(income_statusquo - itemded_statusquo[filingtype]));  //Item 7
 		AGI1 = income_statusquo - dol2num($(".personalexemption").find(".statusquo").text()) - itemded;
 		//alert(AGI1);
 		AGI2 = income_statusquo - dol2num($(".personalexemption").find(".statusquo").text())- dol2num($(".stdded").find(".statusquo").text());
